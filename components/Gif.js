@@ -1,4 +1,4 @@
-var GIPHY_LOADING_URL = 'http://www.ifmo.ru/images/loader.gif';
+var GIPHY_LOADING_URL = 'https://i.redd.it/snntovvrm0ly.gif';
 var styles = {
   minHeight: '310px',
   margin: '0.5em'
