@@ -41,7 +41,7 @@ App = React.createClass({
                         callback(gif);
                     } 
                     else {
-                        reject(new Error(this.statusText)); // Dostaliśmy odpowiedź, ale jest to np 404
+                        reject(new Error(this.statusText));
                     }
                 };
                 xhr.onerror = function() {
