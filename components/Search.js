@@ -16,7 +16,7 @@ Search = React.createClass({
   },
 
   handleKeyUp: function(event) {
-    if (event.keyCode === 13) {
+   if (event.keyCode === 13) {
       this.props.onSearch(this.state.searchingText);
     }
   },
@@ -31,6 +31,7 @@ Search = React.createClass({
     return (
       <input
         type="text"
+        onKeyUp={this.handleKeyUp}
         onChange={this.handleChange}
         placeholder="Tutaj wpisz wyszukiwaną frazę"
         style={styles}
