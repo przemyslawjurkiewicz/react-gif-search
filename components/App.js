@@ -39,18 +39,18 @@ App = React.createClass({
                             sourceUrl: data.url
                         };
                         callback(gif);
-                    } 
-                    else {
+                    } else {
                         reject(new Error(this.statusText));
                     }
                 };
-                xhr.onerror = function() {
+                xhr.onerror = function () {
                     reject(new Error(
-                       'XMLHttpRequest Error:' + this.statusText));
+                        'XMLHttpRequest Error:' + this.statusText));
                 };
                 xhr.open('GET', url);
                 xhr.send();
-            });
+            };
+        );
     },
 
 
