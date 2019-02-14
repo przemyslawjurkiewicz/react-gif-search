@@ -22,13 +22,13 @@ App = React.createClass({
 
 
     getGif: function (searchingText, callback) {
-        var GIPHY_API_URL = 'https://api.giphy.com';
-        var GIPHY_PUB_KEY = 'aszz0vmoVnuHJLwjg9vJUGV77ZWkINA3';
-        var url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-            return new Promise(
-                function (resolve, reject) {
+        return new Promise(
+            function (resolve, reject) {
+                var GIPHY_API_URL = 'https://api.giphy.com';
+                var GIPHY_PUB_KEY = 'aszz0vmoVnuHJLwjg9vJUGV77ZWkINA3';
+                var url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function () {
                     if (xhr.status === 200) {
                         var data = JSON.parse(xhr.responseText).data;
                         var gif = {
@@ -40,16 +40,16 @@ App = React.createClass({
                         reject(new Error(this.statusText));
                     }
                 }
-            )
+                xhr.onerror = function () {
+                    reject(new Error(
+                        'XMLHttpRequest Error:' + this.statusText));
+                };
+                xhr.open('GET', url);
+                xhr.send();
+            }
+        )
             .then(gif => callback(gif))
             .catch(error => console.error('Something went wrong', error));
-        }
-        xhr.onerror = function () {
-            reject(new Error(
-                'XMLHttpRequest Error:' + this.statusText));
-        };
-        xhr.open('GET', url);
-        xhr.send();
     },
 
 
